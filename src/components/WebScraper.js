@@ -167,7 +167,7 @@ const WebScraper = () => {
       });
     } else {
       // Fallback: copy to clipboard
-      const shareText = `PyIntel Web Scraper Results for ${results?.baseDomain || 'website'}:\n\nTotal Links: ${results?.totalLinks || 0}\nInternal: ${results?.uniqueInternalLinks || 0}\nExternal: ${results?.uniqueExternalLinks || 0}\nImages: ${results?.images?.length || 0}`;
+      const shareText = `Pyintel Web Scraper Results for ${results?.baseDomain || 'website'}:\n\nTotal Links: ${results?.totalLinks || 0}\nInternal: ${results?.uniqueInternalLinks || 0}\nExternal: ${results?.uniqueExternalLinks || 0}\nImages: ${results?.images?.length || 0}`;
       navigator.clipboard.writeText(shareText);
       showSnackbar('Results copied to clipboard!');
     }
@@ -236,7 +236,7 @@ const WebScraper = () => {
           const response = await axios.get(proxyUrl, {
             timeout: advancedMode ? 30000 : 15000,
             headers: {
-              'User-Agent': 'PyIntel Web Scraper 2.0 - Advanced Mode',
+              'User-Agent': 'Pyintel Web Scraper 2.0 - Advanced Mode',
               'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
               'Accept-Language': 'en-US,en;q=0.5',
               'Accept-Encoding': 'gzip, deflate',
@@ -657,7 +657,7 @@ const WebScraper = () => {
               </Avatar>
               <Box>
                 <Typography variant="h6" sx={{ fontWeight: 700, color: 'text.primary' }}>
-                  PyIntel Web Scraper
+                  Pyintel Web Scraper
                 </Typography>
                 <Typography variant="caption" color="text.secondary">
                   Professional Link Analysis Platform
@@ -901,7 +901,7 @@ const WebScraper = () => {
                                 </ListItemAvatar>
                                 <ListItemText 
                                   primary="Client-Side Processing Guarantee" 
-                                  secondary="All operations run in your browser - no data sent to PyIntel servers"
+                                  secondary="All operations run in your browser - no data sent to Pyintel servers"
                                 />
                               </ListItem>
                               <ListItem>
@@ -912,7 +912,7 @@ const WebScraper = () => {
                                 </ListItemAvatar>
                                 <ListItemText 
                                   primary="No Liability for Data Usage" 
-                                  secondary="PyIntel is not responsible for data leaks or misuse of scraped information"
+                                  secondary="Pyintel is not responsible for data leaks or misuse of scraped information"
                                 />
                               </ListItem>
                               <ListItem>
