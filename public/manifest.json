@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "PyIntel Scraper",
+  "name": "PyIntel Web Scraper - Advanced AI-Powered Link Analysis Platform",
+  "description": "Powerful web scraping tool for extracting and analyzing website links with advanced AI-driven insights",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +21,9 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#667eea",
+  "background_color": "#ffffff",
+  "categories": ["productivity", "utilities", "developer"],
+  "lang": "en",
+  "orientation": "portrait-primary"
 }
