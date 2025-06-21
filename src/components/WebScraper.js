@@ -224,37 +224,19 @@ const WebScraper = () => {
       setProgressText('Connecting to proxy services...');
 
       let htmlContent = null;
-      let usedProxy = null;
-      let proxyAttempts = 0;
 
-      for (const proxyUrl of proxyServices) {
-        try {
-          proxyAttempts++;
-          setProgress(20 + (proxyAttempts * 15));
-          setProgressText(`Attempting proxy ${proxyAttempts}/${proxyServices.length}...`);
-          
-          const response = await axios.get(proxyUrl, {
-            timeout: advancedMode ? 30000 : 15000,
-            headers: {
-              'User-Agent': 'Pyintel Web Scraper 2.0 - Advanced Mode',
-              'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-              'Accept-Language': 'en-US,en;q=0.5',
-              'Accept-Encoding': 'gzip, deflate',
-            }
-          });
-          
-          htmlContent = response.data.contents || response.data;
-          usedProxy = proxyUrl;
-          break;
-        } catch (proxyError) {
-          console.warn(`Proxy ${proxyUrl} failed:`, proxyError.message);
-          setProgressText(`Proxy ${proxyAttempts} failed, trying next...`);
-          continue;
-        }
+      try {
+        const response = await axios.get(`/api/proxy?url=${encodeURIComponent(url)}&proxy=${selectedProxy}`, {
+          timeout: advancedMode ? 30000 : 15000,
+        });
+        htmlContent = response.data;
+      } catch (proxyError) {
+        console.error('Proxy request failed:', proxyError);
+        throw new Error(`The scraping service failed to fetch the URL. The website might be down or blocking requests.`);
       }
 
       if (!htmlContent) {
-        throw new Error(`All ${proxyAttempts} proxy services failed. The website might be blocking requests or is unreachable.`);
+        throw new Error(`The scraping service returned empty content. The website might be protected or is a single-page application that requires JavaScript.`);
       }
 
       setProgress(60);
